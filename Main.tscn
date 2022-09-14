@@ -1,0 +1,146 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/dice_Script.gd" type="Script" id=1]
+[ext_resource path="res://Images/WhiteSquare.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/HVD_Comic_Serif_Pro.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/scorePatterns_Script.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/score_Script.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/main_Script.gd" type="Script" id=6]
+[ext_resource path="res://Images/BlueSquare.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/dieShuffle1.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/dieThrow1.ogg" type="AudioStream" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="backGround" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 12.6, 7.3 )
+texture = ExtResource( 7 )
+
+[node name="throwAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="rollAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 336, 496 )
+stream = ExtResource( 8 )
+
+[node name="rollButton" type="Button" parent="."]
+margin_left = 336.0
+margin_top = 496.0
+margin_right = 695.0
+margin_bottom = 577.0
+custom_fonts/font = SubResource( 1 )
+text = "ROLL"
+
+[node name="score" type="RichTextLabel" parent="."]
+margin_left = 560.0
+margin_top = 40.0
+margin_right = 800.0
+margin_bottom = 104.0
+custom_fonts/normal_font = SubResource( 2 )
+script = ExtResource( 5 )
+
+[node name="scorePatterns" type="RichTextLabel" parent="."]
+anchor_left = -0.853
+anchor_bottom = 0.875
+margin_left = 224.0
+margin_top = 40.0
+margin_right = 560.0
+margin_bottom = 104.0
+custom_fonts/normal_font = SubResource( 3 )
+script = ExtResource( 4 )
+
+[node name="dice0" type="Sprite" parent="."]
+position = Vector2( 384, 192 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="diceLock" type="TextureButton" parent="dice0"]
+margin_left = -40.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="dice1" type="Sprite" parent="."]
+position = Vector2( 640, 192 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="diceLock" type="TextureButton" parent="dice1"]
+margin_left = -40.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="dice2" type="Sprite" parent="."]
+position = Vector2( 296, 384 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="diceLock" type="TextureButton" parent="dice2"]
+margin_left = -40.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="dice3" type="Sprite" parent="."]
+position = Vector2( 524, 384 )
+scale = Vector2( 1.7, 1.6 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="diceLock" type="TextureButton" parent="dice3"]
+margin_left = -40.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="dice4" type="Sprite" parent="."]
+position = Vector2( 744, 384 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="diceLock" type="TextureButton" parent="dice4"]
+margin_left = -40.0
+margin_top = -39.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[connection signal="pressed" from="rollButton" to="." method="_on_rollButton_pressed"]
+[connection signal="pressed" from="dice0/diceLock" to="dice0" method="_on_diceLock_pressed"]
+[connection signal="pressed" from="dice1/diceLock" to="dice1" method="_on_diceLock_pressed"]
+[connection signal="pressed" from="dice2/diceLock" to="dice2" method="_on_diceLock_pressed"]
+[connection signal="pressed" from="dice3/diceLock" to="dice3" method="_on_diceLock_pressed"]
+[connection signal="pressed" from="dice4/diceLock" to="dice4" method="_on_diceLock_pressed"]
